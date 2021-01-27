@@ -8,7 +8,7 @@ class VerfiyCsrfToekn implements Middeware {
 
     public static function handle(Closure $next)
     {
-        echo '验证csrf Token <br>';
+        echo "验证csrf Token \r\n";
         $next();
     }
 }
@@ -17,7 +17,7 @@ class VerfiyAuth implements Middeware {
 
     public static function handle(Closure $next)
     {
-        echo '验证是否登录 <br>';
+        echo "验证是否登录 \r\n";
         $next();
     }
 }
@@ -26,12 +26,12 @@ class SetCookie implements Middeware {
     public static function handle(Closure $next)
     {
         $next();
-        echo '设置cookie信息！';
+        echo "设置cookie信息！\r\n";
     }
 }
 
 $handle = function() {
-    echo '当前要执行的程序!';
+    echo "当前要执行的程序!\r\n";:
 };
 
 
@@ -45,6 +45,6 @@ $callback = array_reduce($pipe_arr, function($stack, $pipe) {
     return function() use ($stack, $pipe){
         return $pipe::handle($stack);
     };
-},$handle);
+}, $handle);
 
 call_user_func($callback);
