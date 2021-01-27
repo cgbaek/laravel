@@ -41,8 +41,8 @@ $pipe_arr = [
     'SetCookie'
 ];
 
-$callback = array_reduce($pipe_arr,function($stack,$pipe) {
-    return function() use($stack,$pipe){
+$callback = array_reduce($pipe_arr, function($stack, $pipe) {
+    return function() use ($stack, $pipe){
         return $pipe::handle($stack);
     };
 },$handle);
