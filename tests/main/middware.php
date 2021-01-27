@@ -1,10 +1,10 @@
 <?php
 
-interface Milldeware {
+interface Middeware {
     public static function handle(Closure $next);
 }
 
-class VerfiyCsrfToekn implements Milldeware {
+class VerfiyCsrfToekn implements Middeware {
 
     public static function handle(Closure $next)
     {
@@ -13,7 +13,7 @@ class VerfiyCsrfToekn implements Milldeware {
     }
 }
 
-class VerfiyAuth implements Milldeware {
+class VerfiyAuth implements Middeware {
 
     public static function handle(Closure $next)
     {
@@ -22,7 +22,7 @@ class VerfiyAuth implements Milldeware {
     }
 }
 
-class SetCookie implements Milldeware {
+class SetCookie implements Middeware {
     public static function handle(Closure $next)
     {
         $next();
