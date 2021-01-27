@@ -5,6 +5,35 @@ interface log
     public function write();
 }
 
+interface database
+{
+    public function connect();
+}
+
+class config
+{
+    public function dsn()
+    {
+        echo "dsn \r\n";
+    }
+}
+
+class mysql implements database
+{
+    protected $config;
+    public function __construct(config $config)
+    {
+        $this->config = $config;
+    }
+
+    public function connect()
+    {
+        $this->config->dsn();
+        echo "connect mysql \r\n";
+    }
+}
+
+
 // 文件记录日志
 class FileLog implements Log
 {
@@ -24,12 +53,16 @@ class DatabaseLog implements Log
 class User
 {
     protected $log;
-    public function __construct(FileLog $log)
+    protected $database;
+
+    public function __construct(DatabaseLog $log, mysql $database)
     {
         $this->log = $log;
+        $this->database = $database;
     }
     public function login()
     {
+        $this->database->connect();
         // 登录成功，记录登录日志
         echo 'login success...';
         $this->log->write();
