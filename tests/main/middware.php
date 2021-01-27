@@ -31,7 +31,7 @@ class SetCookie implements Middeware {
 }
 
 $handle = function() {
-    echo "当前要执行的程序!\r\n";:
+    echo "当前要执行的程序!\r\n";
 };
 
 
